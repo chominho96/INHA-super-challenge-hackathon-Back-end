@@ -17,7 +17,7 @@ import java.util.List;
 public class SelfDiagnoseForm {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "ID", updatable = false, nullable = false)
     private Long sequence;
     // 각 자가진단서의 고유 ID
 

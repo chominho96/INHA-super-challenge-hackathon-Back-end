@@ -14,7 +14,7 @@ public class SingleDiagnosisRepository {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member_id")
+    @Column(name = "member_id", updatable = false, nullable = false)
     private Long sequence;
     // 각 자가진단서 repository의 고유 ID
 
