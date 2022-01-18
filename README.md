@@ -12,8 +12,7 @@
 
 
 
-- 개발 언어 및 툴
-- Spring, H2 database
+
 
 
 
