@@ -4,16 +4,20 @@ package HitecIsFuture.demo;
 import HitecIsFuture.demo.web.cookie.CookieClass;
 import HitecIsFuture.demo.web.member.Member;
 import HitecIsFuture.demo.web.member.MemberRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -25,9 +29,9 @@ public class HomeController {
 
     // 홈 화면에 대한 처리
 
-    @GetMapping("/")
+    @PostMapping("/")
     @ResponseBody
-    public Member home(@CookieValue(name = "memberId", required = false) Long memberId,
+    public String home(@CookieValue(name = "memberId", required = false) Long memberId,
                        HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         // 로그인된 사용자가 없으면 null data를 JSON 형식으로 return
@@ -41,7 +45,21 @@ public class HomeController {
             // 사용자가 존재하면
             // 사용자를 JSON 형식으로 HTTP body에 포함하여 반환
 
-            return member.get();
+            Map<String, Object> resultMap = new HashMap<>();
+
+            resultMap.put("id", member.get().getId());
+            resultMap.put("loginId", member.get().getLoginId());
+            resultMap.put("name", member.get().getName());
+            resultMap.put("age", member.get().getAge());
+            resultMap.put("gender", member.get().getGender());
+            resultMap.put("job", member.get().getJob());
+            resultMap.put("self_diagnosis_notification", member.get().isSelf_diagnosis_notification());
+
+            String resultJson;
+            resultJson = new ObjectMapper().writeValueAsString(resultMap);
+            return resultJson;
+
+
         }
         else {
             // 쿠키에 저장된 ID에 해당하는 사용자가 유효하지 않은 사용자면
