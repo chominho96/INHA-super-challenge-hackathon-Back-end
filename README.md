@@ -63,6 +63,13 @@ JAVA 11 version and H2 Database version 1.4.200 are required for normal program 
 
 
 
+## Guideline / IO Format & Examples
+
+애플리케이션 구동 전 H2 Database 초기화 및 실행 방법, 입력과 출력 형식과 예제를 'Guildline and IO Format.txt' 에 정리했다.
+You are recommended to read 'Guildline and IO Format.txt' before running application.
+
+
+
 
 
 
