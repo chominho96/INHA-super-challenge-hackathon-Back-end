@@ -77,7 +77,3 @@ public class JpaMemberRepository implements MemberRepository {
     }
 }
 
-
-// 2022_01_16
-// TODO
-// H2 DB 이용해서 memberRepository로 이식하는 작업 필요

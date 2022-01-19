@@ -79,7 +79,19 @@
 
 
 
-4. Write Self-Diagnois Form Page
+4. Logout Service
+
+	1) Address : http://localhost:8080/logout
+
+	2) Output Format (String)	- "LOGOUT_SUCCESS"
+					: logout complete
+				- "EXCEPTION_NOT_SIGNED_IN_STATUS"
+					: fail to logout because of wrong access (try to logout without signing in)
+
+
+
+
+5. Write Self-Diagnois Form Page
 	
 	1) Address : http://localhost:8080/self_diagnosis/write
 

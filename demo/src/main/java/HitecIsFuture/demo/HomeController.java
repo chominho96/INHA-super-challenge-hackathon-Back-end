@@ -1,17 +1,16 @@
 package HitecIsFuture.demo;
 
 
+import HitecIsFuture.demo.web.SessionConst;
 import HitecIsFuture.demo.web.cookie.CookieClass;
 import HitecIsFuture.demo.web.member.Member;
 import HitecIsFuture.demo.web.member.MemberRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,7 +28,9 @@ public class HomeController {
 
     // 홈 화면에 대한 처리
 
-    @PostMapping("/")
+    // ******************************** 2022.01.19 : 세션 방식의 쿠키로 Update
+
+    /*@PostMapping("/")
     @ResponseBody
     public String home(@CookieValue(name = "memberId", required = false) Long memberId,
                        HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -78,6 +79,40 @@ public class HomeController {
         // 홈 화면에 들어왔을 때 쿠키 정보로 멤버를 조회하고, 해당 멤버의 마지막 자가진단 시간이 오늘이 아니라면, 자가진단을 하는
         // 창으로 이동 (알림에 해당하는 정보를 담은 JSON을 return)
         // 이것 또한 위와 같이 넘겨받은 프론트엔드가 자가진단의 유무를 가져가서 로직을 짤 수 있는지가 관건
+
+    }*/
+
+    // ******************************** 2022.01.19 : 세션 방식의 쿠키로 Update
+
+
+
+
+    @PostMapping("/")
+    @ResponseBody
+    public String homeLogin(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member member,
+                            HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
+        // SessionAttribute 어노테이션은 세션을 생성하지는 못한다.
+
+        // 로그인하지 않은 상태일 경우
+        if (member == null) {
+            return null;
+        }
+        // 로그인한 경우 멤버에 대한 JSON을 반환
+        else {
+            Map<String, Object> resultMap = new HashMap<>();
+
+            resultMap.put("id", member.getId());
+            resultMap.put("loginId", member.getLoginId());
+            resultMap.put("name", member.getName());
+            resultMap.put("age", member.getAge());
+            resultMap.put("gender", member.getGender());
+            resultMap.put("job", member.getJob());
+            resultMap.put("self_diagnosis_notification", member.isSelf_diagnosis_notification());
+
+            String resultJson;
+            resultJson = new ObjectMapper().writeValueAsString(resultMap);
+            return resultJson;
+        }
 
     }
 
