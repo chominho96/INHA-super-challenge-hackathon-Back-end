@@ -3,7 +3,7 @@
 *** Guideline
 *** Input/Output Fomat/Example
 
-*** 2022.01.19 ver.
+*** 2022.01.20 ver.
 
 ***** 					CAUTION						*****
 ***** 	For running application normally, you must install JAVA_11, and H2 database (1.4.200 ver) 		*****
@@ -107,6 +107,16 @@
 					: fail to write because there is no diagnosis repository
 				- "EXCEPTION_CANNOT_FIND_MEMBER_FROM_COOKIE"
 					: fail to write because of failure of finding member
+
+
+
+6. Accessing pages that require signing in with only URL (without signing in)
+
+	1) Address : All pages that require sigining in
+	
+	2) Output Format (String)	- "EXCEPTION_REQUIRED_SIGNING_IN"
+					: try to access pages without signing in
+					
 
 
 

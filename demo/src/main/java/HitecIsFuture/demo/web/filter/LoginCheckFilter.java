@@ -41,14 +41,14 @@ public class LoginCheckFilter implements Filter {
                     return;
                 }
             }
-
+            log.info("로그인 인증 성공");
             chain.doFilter(request, response);
             // 다음 필터가 있으면 필터를 호출, 필터가 없으면 서블릿, 컨트롤러를 호출
 
         } catch (Exception e) {
             throw e;
         } finally {
-            log.info("로그인 인증 성공");
+            log.info("로그인 인증절차 완료");
         }
     }
 

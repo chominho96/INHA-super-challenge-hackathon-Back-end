@@ -2,6 +2,7 @@ package HitecIsFuture.demo.web.self_diagnosis;
 
 
 import HitecIsFuture.demo.domain.self_diagnosis.SelfDiagnosisService;
+import HitecIsFuture.demo.web.SessionConst;
 import HitecIsFuture.demo.web.member.Member;
 import HitecIsFuture.demo.web.member.MemberRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
@@ -49,7 +51,62 @@ public class SelfDiagnosisController {
         //  WARNING : date의 경우 yyyy.mm.dd 의 형식으로 넘겨받아야 한다.
 
         // 로그인이 되어있는 상태에서만 자가격리서를 작성할 수 있다.
-        if (memberId == null) {
+
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            // 로그인이 되어 있지 않다면
+            return "EXCEPTION_NEED_SIGN_IN";
+        }
+        Member loginMember = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
+
+        ServletInputStream inputStream = request.getInputStream();
+        // 데이터를 받는 형식
+        String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
+        // String으로 받아서 넘겨줘도 objectMapper가 알아서 JSON 처리를 해준다.
+
+
+        // 입력받은 JSON으로 자가진단서 객체 생성
+        SelfDiagnoseForm selfDiagnoseForm = objectMapper.readValue(messageBody, SelfDiagnoseForm.class);
+        selfDiagnoseForm.setMember(loginMember);
+
+        // member로 헤당하는 자가진단서 repository 탐색
+        Optional<SingleDiagnosisRepository> repository =
+                allDiagnosisFormRepository.findById(loginMember.getId());
+
+        if (repository.isPresent()) {
+            // 성공 케이스
+            selfDiagnosisService.create_new_diagnosis(loginMember, selfDiagnoseForm);
+
+            // 현재 member의 자가진단 여부를 true로 갱신
+            loginMember.setSelf_diagnosis_notification(true);
+
+            // *************************************************************************
+            // 테스트 출력
+            // member 이름으로 repository가 만들어졌는지, 그 안에 객체가 저장되었는지 테스트
+            System.out.println(loginMember.getName() + "가(이) 작성한 총 자가진단서 작성 횟수 : "
+                    + allDiagnosisFormRepository.findById(loginMember.getId()).get().getSelfDiagnoseForms().size());
+            // 테스트 출력
+            // *************************************************************************
+
+            return "SELF_DIAGNOSIS_WRITE_COMPLETE";
+
+
+        } else {
+            // 해당 멤버의 자가진단서 repository를 찾을 수 없는 경우
+            return "EXCEPTION_CANNOT_FIND_DIAGNOSIS_REPOSITORY";
+        }
+    }
+}
+
+// ******** 2022.01.20 : 세션 방식으로 Update
+// ****************************************************************************************************************
+
+
+
+// (구) 쿠키 방식
+
+        /*        if (memberId == null) {
             // 로그인이 되어 있지 않다면
             return "EXCEPTION_NEED_SIGN_IN";
 
@@ -103,11 +160,12 @@ public class SelfDiagnosisController {
         }
 
     }
-}
+}*/
+
 
 
 
 // TODO
 // 2022.01.17
 // h2를 이용한 비메모리 DB 저장 성공
-// 미리 테이블을 만들어두는 등 조치를 취해 메모리 DB 저장 필요요
+// 미리 테이블을 만들어두는 등 조치를 취해 메모리 DB 저장 필요
