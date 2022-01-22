@@ -33,6 +33,8 @@ public class Member {
     // 2. 자가진단 알림은 선생님 객체가 알림 보내기를 눌렀을 떄 일괄적으로 나타난다.
     // TRUE : 알림 O
     // FALSE : 알림 X
+
+
     private boolean self_diagnosis_notification;
 
     public Member() {
