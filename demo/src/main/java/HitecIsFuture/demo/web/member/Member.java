@@ -33,7 +33,10 @@ public class Member {
     // 2. 자가진단 알림은 선생님 객체가 알림 보내기를 눌렀을 떄 일괄적으로 나타난다.
     // TRUE : 알림 O
     // FALSE : 알림 X
+    private int day;
+    private int month;
 
+    private boolean stop_going_school;
 
     private boolean self_diagnosis_notification;
 
@@ -50,7 +53,9 @@ public class Member {
         this.age = age;
         this.gender = gender;
         this.job = job;
-
+        this.day = 0;
+        this.month =0;
+        this.stop_going_school = false;
         // 자가진단을 하지 않은 상태이므로 true
         this.self_diagnosis_notification = true;
     }
