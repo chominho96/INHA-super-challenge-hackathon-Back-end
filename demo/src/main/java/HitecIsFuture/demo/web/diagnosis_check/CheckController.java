@@ -3,6 +3,7 @@ package HitecIsFuture.demo.web.diagnosis_check;
 import HitecIsFuture.demo.domain.service.MemberService;
 import HitecIsFuture.demo.web.member.Member;
 import HitecIsFuture.demo.web.member.MemberRepository;
+import HitecIsFuture.demo.web.message.sens_sms_v2;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -42,9 +43,15 @@ public class CheckController {
             IOException{
         needNotification();
         List<Member> notCheckStudent = memberService.checkStudent();
+        for(int i=0;i<notCheckStudent.size();i++){
+            String phoneNum = notCheckStudent.get(i).getPhoneNumber();
+            sens_sms_v2 sms = new sens_sms_v2();
+            sms.service(phoneNum);
+        }
         if(notCheckStudent.isEmpty())
             return "NULL_STUDENT";
         String resultJson;
+
         resultJson = new ObjectMapper().writeValueAsString(notCheckStudent);
         return resultJson;
     }
