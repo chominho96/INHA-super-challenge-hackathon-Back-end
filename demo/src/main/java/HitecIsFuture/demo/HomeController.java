@@ -29,7 +29,7 @@ public class HomeController {
 
     // 홈 화면에 대한 처리
 
-    @PostMapping("/")
+    @GetMapping("/home")
     @ResponseBody
     public String home(@CookieValue(name = "memberId", required = false) Long memberId,
                        HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -54,6 +54,7 @@ public class HomeController {
             resultMap.put("gender", member.get().getGender());
             resultMap.put("job", member.get().getJob());
             resultMap.put("self_diagnosis_notification", member.get().isSelf_diagnosis_notification());
+            resultMap.put("phone_number", member.get().getPhoneNumber());
 
             String resultJson;
             resultJson = new ObjectMapper().writeValueAsString(resultMap);
