@@ -76,12 +76,15 @@ public class JpaMemberRepository implements MemberRepository {
         return em.createQuery("select m from Member m", Member.class).getResultList();
     }
 
+    @Override
     @Transactional
     public void update(Member member) {
         Member findMember = em.find(Member.class, member.getId());
 
         findMember.setSelf_diagnosis_notification(member.isSelf_diagnosis_notification());
         findMember.setStop_going_school(member.isStop_going_school());
+        findMember.setMonth(member.getMonth());
+        findMember.setDay(member.getDay());
     }
 }
 

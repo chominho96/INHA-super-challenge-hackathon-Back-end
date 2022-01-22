@@ -50,6 +50,9 @@ public class DiagnosisController {
         member.get().setStop_going_school(diagnosisForm.isCheck());
         member.get().setDay(diagnosisForm.getDay());
         member.get().setMonth(diagnosisForm.getMonth());
+
+        memberRepository.update(member.get());
+
         log.info("변환 후 멤버{}", member);
         return "CLEAR";
     }
