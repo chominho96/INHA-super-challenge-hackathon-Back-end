@@ -3,29 +3,29 @@
 *** Guideline
 *** Input/Output Fomat/Example
 
-*** 2022.01.19 ver.
+*** 2022.01.23 ver.
 
-***** 					CAUTION						*****
+***** 					CAUTION									*****
 ***** 	For running application normally, you must install JAVA_11, and H2 database (1.4.200 ver) 		*****
-***** 	If you have another version of H2 database, you must delete H2, and re-install it. 	           		*****
+***** 	If you have another version of H2 database, you must delete H2, and re-install it. 	           	*****
 ***** 	Before you delete H2, you must do "taskkill" 8082 port (by cmd)  			          	*****
-***** 	After you delete H2, you must delete "test.mv.db' (generally located at "C:\Users\USER-PC")    	*****
-*****	You should run H2 database berfore running application					*****
+***** 	After you delete H2, you must delete "test.mv.db' (generally located at "C:\Users\USER-PC")    		*****
+*****	You should run H2 database berfore running application							*****
 
 ***** 	Install JAVA 11 	: 	https://www.oracle.com/java/technologies/downloads/#java11		*****
-***** 	Install H2 database 	:	https://www.h2database.com/html/download-archive.html		*****
+***** 	Install H2 database 	:	https://www.h2database.com/html/download-archive.html			*****
 
 
 
-*****				     H2 Database Initialization					*****
+*****				     H2 Database Initialization							*****
 *****	0. After installing H2 database, execute "H2 console", then it will be executed by your web browser	*****
-*****	1. sign-in without any action								*****
-*****	1-1. If you cannot access normally, you should change your address				*****
-*****		Before	(example) : http://192.168.56.1:8082/login.do?XXXXXXXXXXXXXXXXX		*****
-*****		After 	(example) : http://localhost:8082/login.do?XXXXXXXXXXXXXXXXX		*****
+*****	1. sign-in without any action										*****
+*****	1-1. If you cannot access normally, you should change your address					*****
+*****		Before	(example) : http://192.168.56.1:8082/login.do?XXXXXXXXXXXXXXXXX				*****
+*****		After 	(example) : http://localhost:8082/login.do?XXXXXXXXXXXXXXXXX				*****
 *****	2. After signing-in, signing-out and change JDBC URL to "jdbc:h2:tcp://localhost/~/test"		***** 
-*****	3. sign-in										*****
-*****	4. Initialization H2 Database is completed							*****
+*****	3. sign-in												*****
+*****	4. Initialization H2 Database is completed								*****
 *****	5. After Initializing H2, you can run the application after only signing-in to H2 database		*****
 
 
@@ -36,65 +36,70 @@
 
 1. Home Page
 
-	1) Address : http://localhost:8080/
+	1) Address 			: http://localhost:8080/
 
 	2) Input			: None
 	
-	3-1) Output Format (JSON)	- { "loginId" : String, "password" : String, "name" : String, "age" : Integer, "gender" : "MAN" or "WOMAN", "job" : "STUDENT" or "TEACHER" }
-					: If there is user who signed-in
-				- None
-					: If there is no user
-	3-2) Output Example	: { "loginId" : "kim", "password" : "1234", "name" : "kim1234", "age" : 23, "gender" : "MAN", "job" : "TEACHER" }
+	3-1) Output Format (JSON)	- { "loginId" : String, "password" : String, "name" : String, "age" : Integer, "gender" : "MAN" or "WOMAN", "job" : "STUDENT" or 						"TEACHER" }
+						: If there is user who signed-in
+					- None
+						: If there is no user
+	3-2) Output Example		: { "loginId" : "kim", "password" : "1234", "name" : "kim1234", "age" : 23, "gender" : "MAN", "job" : "TEACHER" }
 
 
 
 
 2. Sign-up Page
 
-	1) Address : http://localhost:8080/members/sign_up
+	1) Address 			: http://localhost:8080/members/sign_up
 
-	2-1) Input Format (JSON)	: { "loginId" : String, "password" : String, "name" : String, "age" : Integer, "gender" : "MAN" or "WOMAN", "job" : "STUDENT" or "TEACHER" }
+	2-1) Input Format (JSON)	: { "loginId" : String, "password" : String, "name" : String, "age" : Integer, "gender" : "MAN" or "WOMAN", "job" : "STUDENT" or 						"TEACHER" }
 	2-2) Input Example		: { "loginId" : "kim", "password" : "1234", "name" : "kim1234", "age" : 23, "gender" : "MAN", "job" : "TEACHER" }
 	
 	3) Output Format (String)	- "SIGN_UP_COMPLETE"
-					 : sign-up complete message
-				- "EXCEPTION_LOGIN_ID_DUPLICATION"
-					 : fail to sign-up because there is already member who has same login id
+					 	: sign-up complete message
+					- "EXCEPTION_LOGIN_ID_DUPLICATION"
+						 : fail to sign-up because there is already member who has same login id
 	
 
 
 3. Sign-in Page
 	
-	1) Address : http://localhost:8080/login
+	1) Address 			: http://localhost:8080/login
 
 	2-1) Input Format (JSON)	: { "loginId" : String, "password" : String }
 	2-2) Input Example		: { "loginId" : "kim", "password" : "1234"}
 
 	3) Output Format (String)	- "LOGIN_SUCCESS"
-					: sign-in complete
-				- "EXCEPTION_WRONG_ID_OR_PASSWORD"
-					: fail to sign-in because of wrong id or wrong password
-				- "EXCEPTION_LOGINFORM_EMPTY"
-					: fail to sign-in because of empty sign-in form
+						: sign-in complete
+					- "EXCEPTION_WRONG_ID_OR_PASSWORD"
+						: fail to sign-in because of wrong id or wrong password
+					- "EXCEPTION_LOGINFORM_EMPTY"
+						: fail to sign-in because of empty sign-in form
 
 
 
 4. Write Self-Diagnois Form Page
 	
-	1) Address : http://localhost:8080/self_diagnosis/write
+	1) Address			: http://localhost:8080/self_diagnosis2/write
 
-	2-1) Input Format (JSON)	: { "date" : String (Format - yyyy.MM.dd), "fever" : Double, "visitOverseas" : Boolean, "haveSelfQuarantineFamily" :  Boolean, "contactConfirmedPerson" :  Boolean,  
-					"visitHighRiskFacilities" :  Boolean,  "cough":  Boolean,  "shortness_OF_BREATH" :  Boolean, "chills" :  Boolean, "arches_PAINS" :  Boolean, "headache" :  Boolean, 
-					"sore_THROAT" :  Boolean, "loss_OF_TASTE" :  Boolean, "loss_OF_SMELL" :  Boolean }
-	2-2) Input Example		: { "date" : "2022.01.02", "fever" : 36.5, "visitOverseas" : false, "haveSelfQuarantineFamily" : false, "contactConfirmedPerson" :false,  "visitHighRiskFacilities" : false,  
-					"cough": false,  "shortness_OF_BREATH" : false, "chills" : false, "arches_PAINS" : false, "headache" : false, "sore_THROAT" : false, "loss_OF_TASTE" : false, "loss_OF_SMELL" : false }
+	2-1) Input Format (JSON)	: { "day" : Integer, "month" : Integer, "check" : boolean }
+	2-2) Input Example		: { "day" : 1, "month" : 1, "check" : true }
 
-	3) Output Format (String)	- "SELF_DIAGNOSIS_WRITE_COMPLETE"
-					: write diagnosis form complete
-				- "EXCEPTION_CANNOT_FIND_DIAGNOSIS_REPOSITORY"
-					: fail to write because there is no diagnosis repository
-				- "EXCEPTION_CANNOT_FIND_MEMBER_FROM_COOKIE"
-					: fail to write because of failure of finding member
+	3) Output Format (String)	- "CLEAR"
+						: write diagnosis form complete
+					- "NULL_EXCEPTION"
+						: fail to write because of failure of finding member
+						
+
+5. Send SMS notification to Self-diagnosis non-participant
+	
+	1) Address			: http://localhost:8080/sendMessage/please
+	
+	2) Input			: None
+	
+	3) Output 			: None (Send SMS to Self-diagnosis non-participant)
+
 
 
 
