@@ -22,10 +22,10 @@
 
 - 학생/선생님 구분 회원가입, 로그인 기능 (쿠키 기반)
 - Student/teacher separate sign up, login function (based on Cookie)
-- 자가진단 서비스 및 자가진단 미참여자 자동, 수동(선생님이 학생에게 전송) 알림 서비스
+- 자가진단 작성 서비스
 - Self-diagnosis service
-- 자가진단 미참여자 자동, 수동 (선생님이 학생에게 전송) 카카오톡 알림 서비스 (Open Api 기반)
-- Automatic/manual KaKao Talk notification service for non-participants in self-diagnosis (based on Open Api)
+- 자가진단 미참여자 자동, 수동 (선생님이 학생에게 전송) SMS 알림 서비스 (Naver S.E.N.S Api 기반)
+- Automatic/manual SMS notification service for non-participants in self-diagnosis (based on Naver S.E.N.S Api)
 - 코로나19 현황 제공 기능 (Open Api 기반)
 - Corona 19 status provision function (based on Open Api)
 - 질병관리청, 각 학급별의 코로나19 관련 지침 제공 기능
