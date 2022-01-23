@@ -31,8 +31,8 @@ public class sens_sms_v2 {
         JSONObject toJson = new JSONObject();
         JSONArray toArr = new JSONArray();
 
-        toJson.put("subject","hi");
-        toJson.put("content","hihi");
+        toJson.put("subject","@하텍이미래당");
+        toJson.put("content","등교를 위해 자가진단을 시행해주시기 바랍니다.");
         toJson.put("to",phoneNum);
         toArr.add(toJson);
 
