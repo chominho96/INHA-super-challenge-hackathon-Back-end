@@ -69,6 +69,32 @@ JAVA 11 version and H2 Database version 1.4.200 are required for normal program 
 You are recommended to read 'Guildline and IO Format.txt' before running application.
 
 
+## Service Diagram
+
+### 0. Key Services Summary
+![전체서비스구성도](https://user-images.githubusercontent.com/66549638/150732365-64abbceb-d745-4cee-8b5d-7143f626f532.jpg)
+
+### 1. Home
+![슬라이드3](https://user-images.githubusercontent.com/66549638/150731457-e27e6f60-649f-43b6-a1b9-f2eae381c935.JPG)
+
+### 2. Login
+![슬라이드4](https://user-images.githubusercontent.com/66549638/150731777-8cf8985f-edc7-4965-bb18-5c836adcb139.JPG)
+
+### 3. Logout
+![슬라이드5](https://user-images.githubusercontent.com/66549638/150731824-a840db0c-d1ba-4fd0-9468-1bcf8e121e1c.JPG)
+
+### 4. Sign up
+![슬라이드6](https://user-images.githubusercontent.com/66549638/150731876-8a78d026-b358-43a9-9c65-05f079d71bd8.JPG)
+
+### 5. Self Diagnosis Write
+![슬라이드7](https://user-images.githubusercontent.com/66549638/150731920-5fa131b2-d7d1-49f5-9b4c-e8f20d7775b7.JPG)
+
+### 6. Self-diagnosis non-participant List
+![슬라이드8](https://user-images.githubusercontent.com/66549638/150731976-96e977cc-97ea-465b-942a-2a3efe9233d0.JPG)
+
+### 7. Self-diagnosis non-participant SMS notification Service
+![슬라이드9](https://user-images.githubusercontent.com/66549638/150732043-229fc25c-05c0-43cf-acfa-72ca2e91d069.JPG)
+
 
 
 
