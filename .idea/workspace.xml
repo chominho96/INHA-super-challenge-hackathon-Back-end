@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="efe029f6-2e54-4413-becd-a58450972863" name="Changes" comment="" />
+    <list default="true" id="efe029f6-2e54-4413-becd-a58450972863" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/HitecIsFuture/demo/web/diagnosis_check/CheckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/HitecIsFuture/demo/web/diagnosis_check/CheckController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/HitecIsFuture/demo/web/message/messageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/HitecIsFuture/demo/web/message/messageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/HitecIsFuture/demo/web/message/sens_sms_v2.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/HitecIsFuture/demo/web/message/sens_sms_v2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/HitecIsFuture/demo/web/self_diagnosis/SelfDiagnosisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/HitecIsFuture/demo/web/self_diagnosis/SelfDiagnosisController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +30,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Spring Projects (Desktop)/jpashop-2/build.gradle" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -34,6 +47,7 @@
       <workItem from="1642768080020" duration="29000" />
       <workItem from="1642768679665" duration="19000" />
       <workItem from="1642834462553" duration="13000" />
+      <workItem from="1648277103149" duration="1524000" />
     </task>
     <servers />
   </component>
