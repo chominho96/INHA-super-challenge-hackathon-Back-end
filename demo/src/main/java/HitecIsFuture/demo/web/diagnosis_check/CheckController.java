@@ -26,10 +26,11 @@ public class CheckController {
     private final MemberRepository memberRepository;
     private final MemberService memberService;
 
+    // 자가진단 참여 여부 갱신 후 모든 학생 리스트 반환
     @GetMapping("/search")
     public String searchStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException{
-        //needNotification();
+        needNotification();
         List<Member> allStudent = memberRepository.findAllStudent();
         if(allStudent.isEmpty())
             return "NULL_STUDENT";
@@ -38,6 +39,7 @@ public class CheckController {
         return resultJson;
     }
 
+    // 자가진단 참여 여부 갱신 후 자가진단 미참여 학생에게 SMS 전송
     @GetMapping("/send")
     public String sendMessage(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException{
@@ -56,6 +58,7 @@ public class CheckController {
         return resultJson;
     }
 
+    // 자가진단 미참여 여부 갱신 함수
     public void needNotification(){
         List<Member> allStudent=memberRepository.findAllStudent();
         for(int i=0;i<allStudent.size();i++) {

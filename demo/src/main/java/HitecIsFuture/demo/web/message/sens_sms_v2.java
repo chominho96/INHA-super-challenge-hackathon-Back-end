@@ -14,6 +14,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
+// S.E.N.S API 기반 SMS 전송
 public class sens_sms_v2 {
     public void service(String phoneNum){
         String hostNameUrl = "https://sens.apigw.ntruss.com";
